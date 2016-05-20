@@ -1,4 +1,4 @@
-package com.pablissimo.sonar;
+package com.pablissimo.sonar.lcov;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -67,7 +67,6 @@ public class LOCSensor implements Sensor {
                 if (line != null) {
                     isACommentLine = isCommentOpen;
                     line = line.trim();
-
                     if (isCommentOpen) {
                         if (line.contains("*/")) {
                             isCommentOpen = false;
@@ -78,19 +77,10 @@ public class LOCSensor implements Sensor {
                             isACommentLine = true;
                         }
                         if (line.startsWith("/*")) {
-                            if (line.contains("*/")) {
-                                isCommentOpen = false;
-                            } else {
-                                isCommentOpen = true;
-                            }
+                            isCommentOpen = !line.contains("*/");
                             isACommentLine = true;
-
                         } else if (line.contains("/*")) {
-                            if (line.contains("*/")) {
-                                isCommentOpen = false;
-                            } else {
-                                isCommentOpen = true;
-                            }
+                            isCommentOpen = !line.contains("*/");
                             isACommentLine = false;
                         }
                     }

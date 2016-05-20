@@ -1,4 +1,4 @@
-package com.pablissimo.sonar;
+package com.pablissimo.sonar.lcov;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
@@ -25,6 +25,9 @@ import org.sonar.api.batch.fs.FileSystem;
 import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.measures.CoreMetrics;
 import org.sonar.api.measures.Measure;
+
+import com.pablissimo.sonar.TypeScriptLanguage;
+import com.pablissimo.sonar.lcov.LOCSensor;
 
 public class LOCSensorTest {
     FileSystem fileSystem;
